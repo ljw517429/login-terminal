@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package login; 
+
+// RPC接口
+service Login {
+  rpc OnSignIn (SignInRequest) returns (SignInResponse) {}
+  rpc OnSignUp (SignUpRequest) returns (SignUpResponse) {}
+  rpc OnHeart (HeartRequest) returns (HeartResponse) {}
+}
+
+// 登录和注册的响应信息
+message ReplyInfo {
+    string      token   = 1;
+}
+
+// 登录请求结构
+message SignInRequest {
+    string      account = 1;
+    string      pass    = 2;
+    string      sign    = 3;
+}
+
+// 登录响应结构
+message SignInResponse {
+    int32   status  = 1;
+    string  message = 2;
+    string  token   = 3;
+    string  sign    = 4;
+}
+
+// 注册请求结构
+message SignUpRequest {
+    string      account = 1;
+    string      pass    = 2;
+    string      sign    = 3;
+}
+
+// 注册响应结构
+message SignUpResponse {
+    int32       status  = 1;
+    string      message = 2;
+    string      token   = 3;
+    string      sign    = 4;
+}
+
+// 心跳包请求
+message HeartRequest {
+    string      account = 1;
+    string      token   = 2;
+}
+
+// 心跳包响应
+message HeartResponse {
+    int32               status  = 1;
+    string              message = 2;
+}
